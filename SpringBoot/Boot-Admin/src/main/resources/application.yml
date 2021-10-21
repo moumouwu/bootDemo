@@ -1,0 +1,14 @@
+server:
+  port: 18080
+
+spring:
+  security:
+    user:
+      name: admin
+      password: 123456
+
+
+
+
+
+

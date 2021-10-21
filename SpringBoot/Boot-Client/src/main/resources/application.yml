@@ -1,0 +1,40 @@
+server:
+  port: 18081
+
+spring:
+  application:
+    name: admin-client
+
+  # admin-client 的用户名和密码
+  security:
+    user:
+      name: clientAdmin
+      password: 123456
+  boot:
+    admin:
+      client:
+        # admin-server的地址
+        url:  http://localhost:18080
+        # admin-server的账号和密码
+        username: admin
+        password: 123456
+        instance:
+          metadata:
+            # 这里配置admin-client的账号和密码
+            user.name: ${spring.security.user.name}
+            user.password: ${spring.security.user.password}
+
+
+# 开放端点用于SpringBoot Admin的监控
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+
+logging:
+  file:
+    name: admin-client.log  #配置生成日志文件名称

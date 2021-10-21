@@ -1,0 +1,25 @@
+server:
+  port: 9998
+
+spring:
+  # 服务模块
+  devtools:
+    restart:
+      # 热部署开关
+      enabled: true
+  profiles:
+    active: druid
+
+  # 配置jpa
+  jpa:
+    #是否显示sql 语句
+    show-sql: true
+    # 更新数据库表结构
+    hibernate:
+      ddl-auto: create
+#    properties:
+#      hibernate:
+#        hbm2ddl:
+#          auto: create
+#        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+#        format_sql: true

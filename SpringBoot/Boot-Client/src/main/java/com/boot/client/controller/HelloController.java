@@ -47,6 +47,6 @@ public class HelloController {
 
         log.info("new了 100MB");
 
-        return "hi springboot addmin " + LocalDateTime.now();
+        return "hi springboot admin " + LocalDateTime.now();
     }
 }

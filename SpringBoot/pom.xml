@@ -13,7 +13,7 @@
     <modules>
         <module>Boot-Admin</module>
         <module>Boot-Client</module>
-        <module>Boot-Upload</module>
+        <module>boot-upload</module>
         <module>Boot-quartz</module>
     </modules>
 

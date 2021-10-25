@@ -20,6 +20,7 @@ import java.io.IOException;
  * @author binSin
  * @date 2021/10/20
  */
+@Slf4j
 public class FileUploadUtils {
 
     /**
@@ -123,6 +124,8 @@ public class FileUploadUtils {
         if (!desc.exists()) {
             desc.createNewFile();
         }
+        log.error("desc:{}", desc);
+        System.out.println("desc:" + desc);
         return desc;
     }
 

@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <packaging>jar</packaging>
-    <artifactId>Boot-Upload</artifactId>
+    <artifactId>boot-upload</artifactId>
 
     <description>
         云服务器(本地)图片、文件上传、Excel上传下载

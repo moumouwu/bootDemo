@@ -19,7 +19,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 @RequestMapping("api")
 public class HelloController {
 
-
     private AtomicInteger count = new AtomicInteger(0);
 
     /**

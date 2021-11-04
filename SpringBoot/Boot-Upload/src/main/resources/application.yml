@@ -7,8 +7,8 @@ boot:
   # 版权年份
   copyrightYear: 2021
   # 文件路径 示例（ Windows配置D:/demo/uploadPath，Linux配置 /home/demo/uploadPath）
-#  profile: D:/demo
-  profile: /home/data/image
+  profile: D:/demo
+#  profile: /home/data/image
   # 获取ip地址开关
   addressEnabled: false
   # 验证码类型 math 数组计算 char 字符验证
@@ -43,6 +43,7 @@ spring:
     restart:
       # 热部署开关
       enabled: true
+# 日志
 logging:
   config: classpath:log/logback-spring.xml
 

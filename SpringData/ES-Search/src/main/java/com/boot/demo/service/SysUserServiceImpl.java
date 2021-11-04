@@ -341,15 +341,15 @@ public class SysUserServiceImpl {
 //        // 2.调用spring data elasticsearch的API 导入到ES中
 //        skuEsMapper.saveAll(skuInfos);
         String str = "{\"电视音响效果\":\"立体声\",\"电视屏幕尺寸\":\"20英寸\",\"尺码\":\"165\"}";
-        SysUser user = new SysUser();
-        user.setId(2);
-        user.setNickname("张三2");
-        user.setUsername("admin");
-        user.setSpecMap(JSON.parseObject(str, Map.class));
-        userRepository.save(user);
+//        SysUser user = new SysUser();
+//        user.setId(2);
+//        user.setNickname("张三2");
+//        user.setUsername("admin");
+//        user.setSpecMap(JSON.parseObject(str, Map.class));
+//        userRepository.save(user);
 
         List<SysUser> list = new ArrayList<>();
-        for (int i = 100; i < 200; i++) {
+        for (int i = 20; i < 200; i++) {
             SysUser user1 = new SysUser();
             user1.setId(i);
             user1.setNickname("张三" + i + "李四");

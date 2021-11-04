@@ -33,20 +33,16 @@ public class CommonController {
     private ServerConfig serverConfig;
 
 
-
     /**
      * 通用下载请求
      *
      * @param fileName 文件名称
-     * @param delete 是否删除
+     * @param delete   是否删除
      */
     @GetMapping("/download")
-    public void fileDownload(String fileName, Boolean delete, HttpServletResponse response, HttpServletRequest request)
-    {
-        try
-        {
-            if (!FileUtils.checkAllowDownload(fileName))
-            {
+    public void fileDownload(String fileName, Boolean delete, HttpServletResponse response, HttpServletRequest request) {
+        try {
+            if (!FileUtils.checkAllowDownload(fileName)) {
                 throw new Exception(StringUtils.format("文件名称({})非法，不允许下载。 ", fileName));
             }
             String realFileName = System.currentTimeMillis() + fileName.substring(fileName.indexOf("_") + 1);
@@ -55,13 +51,10 @@ public class CommonController {
             response.setContentType(MediaType.APPLICATION_OCTET_STREAM_VALUE);
             FileUtils.setAttachmentResponseHeader(response, realFileName);
             FileUtils.writeBytes(filePath, response.getOutputStream());
-            if (delete)
-            {
+            if (delete) {
                 FileUtils.deleteFile(filePath);
             }
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             log.error("下载文件失败", e);
         }
     }
@@ -83,7 +76,7 @@ public class CommonController {
             map.put("url", url);
             return JsonResult.success(map);
         } catch (Exception e) {
-            return JsonResult.fail( e.getMessage(), null);
+            return JsonResult.fail(e.getMessage(), null);
         }
     }
 
@@ -102,6 +95,9 @@ public class CommonController {
             String fileName = FileUploadUtils.upload(filePath, file, MimeTypeUtils.MEDIA_EXTENSION);
             String url = serverConfig.getUrl() + fileName;
             String thumbnail = ImageUtil.getThumbnail(filePath, fileName);
+            if (StringUtils.isBlank(thumbnail)) {
+                return JsonResult.fail("视频太短,请重新上传", null);
+            }
             String thumbnailUrl = serverConfig.getUrl() + thumbnail;
             Map<String, Object> map = new HashMap<>();
             map.put("fileName", fileName);
@@ -110,7 +106,7 @@ public class CommonController {
             map.put("thumbnailUrl", thumbnailUrl);
             return JsonResult.success(map);
         } catch (Exception e) {
-            return JsonResult.fail( e.getMessage(), null);
+            return JsonResult.fail(e.getMessage(), null);
         }
     }
 }

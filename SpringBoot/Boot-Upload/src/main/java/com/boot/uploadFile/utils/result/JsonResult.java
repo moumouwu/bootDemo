@@ -107,7 +107,7 @@ public class JsonResult<T> implements Serializable {
     }
 
     public static <T> JsonResult fail(String msg, T data) {
-        return new JsonResult(Boolean.TRUE, 40000, msg, data);
+        return new JsonResult(Boolean.FALSE, 40000, msg, data);
     }
 
     public static JsonResult fail(ResultCode resultEnum) {

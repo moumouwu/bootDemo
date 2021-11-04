@@ -1,6 +1,8 @@
 package com.boot.uploadFile.controller;
 
+import com.boot.uploadFile.config.BootConfig;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import sun.misc.BASE64Decoder;

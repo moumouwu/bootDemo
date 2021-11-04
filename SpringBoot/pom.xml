@@ -15,6 +15,7 @@
         <module>Boot-Client</module>
         <module>boot-upload</module>
         <module>Boot-quartz</module>
+        <module>boot-netty</module>
     </modules>
 
     <artifactId>SpringBoot</artifactId>

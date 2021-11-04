@@ -53,18 +53,20 @@ public class ImageUtil {
         ff.start();
         Frame f;
         int length = ff.getLengthInFrames();
+        log.error("长度:{}", length);
         int i = 0;
         String path = null;
         while (i < length) {
             // 过滤前5帧，避免出现全黑的图片，依自己情况而定
             f = ff.grabFrame();
-            if ((i > 200) && (f.image != null)) {
+            if ((i > 100) && (f.image != null)) {
                 path = doExecuteFrame(f, targetFilePath, targetFileName);
                 break;
             }
             i++;
         }
         ff.stop();
+        log.error("path:{}", path);
         return path;
     }
 

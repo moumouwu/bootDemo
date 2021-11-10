@@ -58,7 +58,7 @@ public class WebSocketServer implements Runnable{
                     .childOption(ChannelOption.SO_KEEPALIVE, true)
                     // 配置固定长度接收缓存区分配器
                     .childOption(ChannelOption.RCVBUF_ALLOCATOR, new FixedRecvByteBufAllocator(592048))
-                    //绑定I/O事件的处理类,WebSocketChildChannelHandler中定义
+                    // 绑定I/O事件的处理类,WebSocketChildChannelHandler中定义
                     .childHandler(childChannelHandler);
             long end = System.currentTimeMillis();
             logger.info("Netty Websocket服务器启动完成，耗时 " + (end - begin) + " ms，已绑定端口 " + port + " 阻塞式等候客户端连接");

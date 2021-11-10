@@ -28,13 +28,15 @@ public class GroupChatServerHandler extends SimpleChannelInboundHandler<String> 
 
     /**
      * handlerAdded 表示连接建立，一旦连接，第一个被执行
-     *              将当前channel 加入到  channelGroup
+     * 将当前channel 加入到  channelGroup
+     *
      * @param ctx
      * @throws Exception
      */
     @Override
     public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
         Channel channel = ctx.channel();
+
         //将该客户加入聊天的信息推送给其它在线的客户端
         /*
         该方法会将 channelGroup 中所有的channel 遍历，并发送 消息，
@@ -47,6 +49,7 @@ public class GroupChatServerHandler extends SimpleChannelInboundHandler<String> 
 
     /**
      * 断开连接, 将xx客户离开信息推送给当前在线的客户
+     *
      * @param ctx
      * @throws Exception
      */
@@ -56,11 +59,11 @@ public class GroupChatServerHandler extends SimpleChannelInboundHandler<String> 
         Channel channel = ctx.channel();
         channelGroup.writeAndFlush("[客户端]" + channel.remoteAddress() + " 离开了\n");
         System.out.println("channelGroup size" + channelGroup.size());
-
     }
 
     /**
      * 表示channel 处于活动状态, 既刚出生 提示 xx上线
+     *
      * @param ctx
      * @throws Exception
      */
@@ -72,6 +75,7 @@ public class GroupChatServerHandler extends SimpleChannelInboundHandler<String> 
 
     /**
      * 表示channel 处于不活动状态, 既死亡状态 提示 xx离线了
+     *
      * @param ctx
      * @throws Exception
      */

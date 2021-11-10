@@ -2,6 +2,7 @@ package com.boot.netty.example.demo;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -64,10 +65,25 @@ public class EchoServer {
                                     .addLast(serverHandler);
                         }
                     });
+
             /**
              * 异步地绑定服务器；调用 sync()方法阻塞等待直到绑定完成
              */
             ChannelFuture f = b.bind().sync();
+            // 添加监听类
+            f.addListener(new ChannelFutureListener() {
+                // 匿名内部类 ChannelFutureListener
+                // 重写 operationComplete 方法
+                @Override
+                public void operationComplete(ChannelFuture channelFuture) throws Exception {
+                    // 判断是否操作成功
+                    if (channelFuture.isSuccess()) {
+                        System.out.println("连接成功");
+                    } else {
+                        System.out.println("连接失败");
+                    }
+                }
+            });
             /**
              * 获取 Channel 的CloseFuture，并且阻塞当前线程直到它完成
              */

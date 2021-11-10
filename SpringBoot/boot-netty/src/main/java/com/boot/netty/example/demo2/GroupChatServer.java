@@ -39,7 +39,6 @@ public class GroupChatServer {
 
         try {
             ServerBootstrap b = new ServerBootstrap();
-
             b.group(bossGroup, workerGroup)
                     .channel(NioServerSocketChannel.class)
                     .option(ChannelOption.SO_BACKLOG, 128)
@@ -47,13 +46,13 @@ public class GroupChatServer {
                     .childHandler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         protected void initChannel(SocketChannel ch) throws Exception {
-                            //获取到pipeline
+                            // 获取到pipeline
                             ChannelPipeline pipeline = ch.pipeline();
-                            //向pipeline加入解码器
+                            // 向pipeline加入解码器
                             pipeline.addLast("decoder", new StringDecoder());
-                            //向pipeline加入编码器
+                            // 向pipeline加入编码器
                             pipeline.addLast("encoder", new StringEncoder());
-                            //加入自己的业务处理handler
+                            // 加入自己的业务处理handler
                             pipeline.addLast(new GroupChatServerHandler());
                         }
                     });

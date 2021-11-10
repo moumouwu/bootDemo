@@ -49,7 +49,7 @@ public class EchoClient {
         }
     }
 
-    public static void main(String[] args) throws Exception {
+        public static void main(String[] args) throws Exception {
         String host = "localhost";
         int port = 8081;
         new EchoClient(host, port).start();

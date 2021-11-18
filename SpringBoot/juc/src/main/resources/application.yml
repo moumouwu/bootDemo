@@ -1,0 +1,33 @@
+# 开发环境配置
+server:
+  port: 18085
+  servlet:
+    # 应用的访问路径
+    context-path: /
+  tomcat:
+    # tomcat的URI编码
+    uri-encoding: UTF-8
+
+spring:
+  application:
+    name: Thread
+
+  # 服务模块
+  devtools:
+    restart:
+      # 热部署开关
+      enabled: true
+# 日志
+#logging:
+#  config: classpath:log/logback-spring.xml
+
+# 开放端点用于SpringBoot Admin的监控
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+

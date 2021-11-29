@@ -1,4 +1,4 @@
-package com.boot.juc.thread;
+package com.boot.juc.lock;
 
 import java.util.Date;
 

@@ -19,6 +19,11 @@ public class CountDownLatchDemo1 {
         CountDownLatch countDownLatch = new CountDownLatch(8);
         for (int i = 1; i <= 8; i++) {
             new Thread(() -> {
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 System.out.println(Thread.currentThread().getName() + "出去啦");
                 // 出去一个人计数器就减1
                 countDownLatch.countDown();

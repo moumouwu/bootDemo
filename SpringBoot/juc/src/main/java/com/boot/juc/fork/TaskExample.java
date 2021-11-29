@@ -40,4 +40,5 @@ public class TaskExample extends RecursiveTask<Long> {
         }
         return sum;
     }
+
 }

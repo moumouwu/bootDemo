@@ -7,7 +7,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
  * @author binSin
  * @date 2021/11/11
  */
-public class demo {
+public class Demo {
 
     // 集合线程问题
     public static void main(String[] args) {

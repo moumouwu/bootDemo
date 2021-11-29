@@ -4,7 +4,7 @@ package com.boot.juc.thread;
  * @author binSin
  * @date 2021/11/15
  */
-public class testDemo {
+public class TestDemo {
 
     final String str = "testDemo.str";
     private A innerClass;
@@ -16,7 +16,7 @@ public class testDemo {
 
 
     public static void main(String[] args) {
-        testDemo a = new testDemo();
+        TestDemo a = new TestDemo();
         A inner = a.getInner();
 
         System.out.println(inner.str);
@@ -33,7 +33,7 @@ public class testDemo {
 
         final String str2 = this.str1;
 
-        final String str = testDemo.this.str;
+        final String str = TestDemo.this.str;
 
         public A(){
 

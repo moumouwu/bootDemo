@@ -8,28 +8,10 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <description>quartz - 定时任务</description>
-    <artifactId>Boot-quartz</artifactId>
+    <description>boot整合activiti7 工作流</description>
+    <artifactId>boot-activiti</artifactId>
 
     <dependencies>
-        <!-- Spring框架基本的核心工具 -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context-support</artifactId>
-        </dependency>
-
-        <!-- 定时任务 -->
-        <dependency>
-            <groupId>org.quartz-scheduler</groupId>
-            <artifactId>quartz</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>com.mchange</groupId>
-                    <artifactId>c3p0</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-
         <!-- alibaba 数据源 -->
         <dependency>
             <groupId>com.alibaba</groupId>
@@ -37,23 +19,24 @@
             <version>1.1.22</version>
         </dependency>
 
-        <!-- mybatis plus 代码生成器 -->
+        <!-- activiti工作流 -->
         <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-boot-starter</artifactId>
-            <version>3.2.0</version>
+            <groupId>org.activiti</groupId>
+            <artifactId>activiti-spring-boot-starter</artifactId>
+            <version>7.0.0.Beta2</version>
         </dependency>
         <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-generator</artifactId>
-            <version>3.2.0</version>
+            <groupId>org.bytedeco</groupId>
+            <artifactId>opencv</artifactId>
+            <version>4.5.3-1.5.6</version>
+            <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>org.freemarker</groupId>
-            <artifactId>freemarker</artifactId>
-            <version>2.3.28</version>
+            <groupId>org.bytedeco</groupId>
+            <artifactId>opencv</artifactId>
+            <version>4.5.3-1.5.6</version>
+            <scope>compile</scope>
         </dependency>
-        <!-- mybatis -->
     </dependencies>
 
     <build>

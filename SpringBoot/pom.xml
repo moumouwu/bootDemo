@@ -17,6 +17,7 @@
         <module>Boot-quartz</module>
         <module>boot-netty</module>
         <module>juc</module>
+        <module>boot-activiti</module>
     </modules>
 
     <artifactId>SpringBoot</artifactId>

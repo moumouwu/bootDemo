@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:flowable="http://flowable.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.flowable.org/processdef">
+  <process id="myProcess_2" name="holiday2" isExecutable="true">
+    <startEvent id="flow1"/>
+    <userTask id="flow2" name="审批" flowable:skipExpression="#{activitiServiceImpl.test(execution,'tx')}"/>
+    <endEvent id="flow3"/>
+    <endEvent id="flow4"/>
+    <sequenceFlow id="flow7" sourceRef="flow2" targetRef="flow4" name="拒绝"/>
+    <sequenceFlow id="flow6" sourceRef="flow2" targetRef="flow3" name="同意"/>
+    <sequenceFlow id="flow5" sourceRef="flow1" targetRef="flow2" name="发起申请">
+      <conditionExpression>#{activitiServiceImpl.test(execution,'ass')}</conditionExpression>
+    </sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_holiday2">
+    <bpmndi:BPMNPlane bpmnElement="myProcess_2" id="BPMNPlane_holiday2">
+      <bpmdi:BPMNShape xmlns:bpmdi="http://www.omg.org/spec/BPMN/20100524/DI" id="shape-150a147b-71ba-426a-99e5-ac5711103de7" bpmnElement="flow1">
+        <omgdc:Bounds x="13.779968" y="-164.80927" width="30.0" height="30.0"/>
+      </bpmdi:BPMNShape>
+      <bpmdi:BPMNShape xmlns:bpmdi="http://www.omg.org/spec/BPMN/20100524/DI" id="shape-8916089e-48c1-45e8-8aed-c22d970d5d69" bpmnElement="flow2">
+        <omgdc:Bounds x="-6.706601" y="-102.09049" width="70.97314" height="29.721329"/>
+      </bpmdi:BPMNShape>
+      <bpmdi:BPMNShape xmlns:bpmdi="http://www.omg.org/spec/BPMN/20100524/DI" id="shape-275ec816-d67f-4332-88b3-8d54ea660b9c" bpmnElement="flow3">
+        <omgdc:Bounds x="-54.6405" y="-46.11012" width="30.0" height="30.0"/>
+      </bpmdi:BPMNShape>
+      <bpmdi:BPMNShape xmlns:bpmdi="http://www.omg.org/spec/BPMN/20100524/DI" id="shape-33d7cabb-498e-4d8a-a51c-014c133eff34" bpmnElement="flow4">
+        <omgdc:Bounds x="68.63327" y="-46.11012" width="30.0" height="30.0"/>
+      </bpmdi:BPMNShape>
+      <bpmdi:BPMNEdge xmlns:bpmdi="http://www.omg.org/spec/BPMN/20100524/DI" id="edge-f76c690f-3a67-41bb-a219-3c571a6610fb" bpmnElement="flow7">
+        <omgdi:waypoint x="64.26654" y="-87.22983"/>
+        <omgdi:waypoint x="83.63327" y="-46.11012"/>
+      </bpmdi:BPMNEdge>
+      <bpmdi:BPMNEdge xmlns:bpmdi="http://www.omg.org/spec/BPMN/20100524/DI" id="edge-67d9640e-1f28-43e0-a984-7297061d28ea" bpmnElement="flow6">
+        <omgdi:waypoint x="-6.7066" y="-79.7995"/>
+        <omgdi:waypoint x="-32.1405" y="-46.11012"/>
+      </bpmdi:BPMNEdge>
+      <bpmdi:BPMNShape xmlns:bpmdi="http://www.omg.org/spec/BPMN/20100524/DI" id="shape-4d976a8f-e6ca-4db4-b0c0-bf69b3c5a19c" bpmnElement="flow4">
+        <omgdc:Bounds x="98.63327" y="-46.11012" width="30.0" height="30.0"/>
+      </bpmdi:BPMNShape>
+      <bpmdi:BPMNEdge xmlns:bpmdi="http://www.omg.org/spec/BPMN/20100524/DI" id="edge-f0da2c62-c956-41bb-8327-426a68af6932" bpmnElement="flow7">
+        <omgdi:waypoint x="64.26654" y="-79.7995"/>
+        <omgdi:waypoint x="98.63327" y="-38.61012"/>
+      </bpmdi:BPMNEdge>
+      <bpmdi:BPMNEdge xmlns:bpmdi="http://www.omg.org/spec/BPMN/20100524/DI" id="edge-e81af124-2da1-44a3-ad44-d1dc4543bd43" bpmnElement="flow6">
+        <omgdi:waypoint x="11.036684" y="-72.36916"/>
+        <omgdi:waypoint x="-24.6405" y="-38.61012"/>
+      </bpmdi:BPMNEdge>
+      <bpmdi:BPMNEdge xmlns:bpmdi="http://www.omg.org/spec/BPMN/20100524/DI" id="edge-bf17f2b4-78c4-4201-b607-9f6bae7ba047" bpmnElement="flow5">
+        <omgdi:waypoint x="28.779968" y="-134.80927"/>
+        <omgdi:waypoint x="28.779968" y="-102.09049"/>
+      </bpmdi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

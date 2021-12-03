@@ -1,0 +1,38 @@
+server:
+  port: 18086
+
+spring:
+  application:
+    name: Activiti
+  # 服务模块
+  devtools:
+    restart:
+      # 热部署开关
+      enabled: true
+  profiles:
+    active: druid
+
+  activiti:
+    database-schema-update: true # 自动创建表
+    history-level: full # 记录历史等级
+    db-history-used: true # 检查历史表是否存在
+
+
+# mybatis-plus配置
+#mybatis-plus:
+#  configuration:
+#    map-underscore-to-camel-case: true
+#    auto-mapping-behavior: full
+#    #控制台打印sql语句
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#  mapper-locations: classpath*:mapper/**/*Mapper.xml
+
+# 开放端点用于SpringBoot Admin的监控
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always

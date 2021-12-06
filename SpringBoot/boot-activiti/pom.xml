@@ -25,18 +25,7 @@
             <artifactId>activiti-spring-boot-starter</artifactId>
             <version>7.0.0.Beta2</version>
         </dependency>
-        <dependency>
-            <groupId>org.bytedeco</groupId>
-            <artifactId>opencv</artifactId>
-            <version>4.5.3-1.5.6</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.bytedeco</groupId>
-            <artifactId>opencv</artifactId>
-            <version>4.5.3-1.5.6</version>
-            <scope>compile</scope>
-        </dependency>
+
     </dependencies>
 
     <build>

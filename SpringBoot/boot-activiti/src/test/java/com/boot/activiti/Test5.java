@@ -28,9 +28,9 @@ import java.util.Map;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class Test3 {
+public class Test5 {
 
-    private Logger logger = LoggerFactory.getLogger(Test3.class);
+    private Logger logger = LoggerFactory.getLogger(Test5.class);
 
     @Autowired
     private ProcessRuntime processRuntime;
@@ -52,7 +52,7 @@ public class Test3 {
     @org.junit.Test
     public void queryHistoryTask() {
         List<HistoricTaskInstance> list = historyService.createHistoricTaskInstanceQuery() // 创建历史活动实例查询
-//                .processInstanceId("d6f249a5-565e-11ec-9837-2cf05d0fe3e3") // 执行流程实例id
+//                .processInstanceId("b188b6fb-5672-11ec-981d-2cf05d0fe3e3") // 执行流程实例id
                 .orderByTaskCreateTime()
                 .asc()
                 .list();
@@ -80,10 +80,8 @@ public class Test3 {
     public void taskQuery() {
         // 根据流程定义的key,负责人assignee来实现当前用户的任务列表查询
         List<Task> list = taskService.createTaskQuery()
-                .processDefinitionKey("myProcess_3")
-//        d6f249a5-565e-11ec-9837-2cf05d0fe3e3
-//        fd8ccbde-565e-11ec-bbeb-2cf05d0fe3e3
-                .taskAssignee("zhangsan10001")
+                .processDefinitionKey("myProcess_5")
+//                .taskAssignee("zhangsan10001")
 //                .taskCandidateOrAssigned("department")
 //                .active()
                 .list();
@@ -119,7 +117,7 @@ public class Test3 {
      */
     @org.junit.Test
     public void departmentAudit() {
-        String instanceId = "fd8ccbde-565e-11ec-bbeb-2cf05d0fe3e3"; // 任务ID
+        String instanceId = "55be78f9-566e-11ec-8bff-2cf05d0fe3e3"; // 任务ID
         String departmentalOpinion = "早去早回";
         Task task = taskService.createTaskQuery().processInstanceId(instanceId).singleResult();
 //        task.setAssignee("张三");
@@ -135,7 +133,7 @@ public class Test3 {
      */
     @org.junit.Test
     public void showTaskVariable() {
-        String instanceId = "6f8ef842-5273-11ec-b7f8-2cf05d0fe3e3"; // 任务ID
+        String instanceId = "41b51686-5672-11ec-9431-2cf05d0fe3e3"; // 任务ID
 
         Task task = taskService.createTaskQuery().processInstanceId(instanceId).singleResult();
         if (task == null) {
@@ -148,7 +146,7 @@ public class Test3 {
         String days = (String) taskService.getVariable(task.getId(), "days");
         Date date = (Date) taskService.getVariable(task.getId(), "date");
         String reason = (String) taskService.getVariable(task.getId(), "reason");
-        String userId = (String) taskService.getVariable(task.getId(), "userId");
+        String userId = (String) taskService.getVariable(task.getId(), "user2");
         System.out.println("请假天数:  " + days);
         System.out.println("请假理由:  " + reason);
         System.out.println("请假人id:  " + userId);
@@ -160,8 +158,8 @@ public class Test3 {
      */
     @org.junit.Test
     public void employeeApply() {
-        String instanceId = "89e3efae-5284-11ec-892b-2cf05d0fe3e3"; // 任务ID
-        String leaveDays = "10"; // 请假天数
+        String instanceId = "3b6168b9-5673-11ec-902a-2cf05d0fe3e3"; // 任务ID
+        String leaveDays = "3"; // 请假天数
         String leaveReason = "回老家结婚"; // 请假原因
         Task task = taskService.createTaskQuery().processInstanceId(instanceId).singleResult();
         if (task == null) {
@@ -172,8 +170,9 @@ public class Test3 {
         map.put("days", leaveDays);
         map.put("date", new Date());
         map.put("reason", leaveReason);
-
-        taskService.setAssignee(task.getId(), "zhangsan");
+//        map.put("user2","master");
+//
+//        taskService.setAssignee(task.getId(), "zhangsan");
         taskService.complete(task.getId(), map);
 
 //        Task task1 = taskService.createTaskQuery().processInstanceId(instanceId).singleResult();
@@ -187,11 +186,13 @@ public class Test3 {
      */
     @org.junit.Test
     public void start() {
-        String instanceKey = "myProcess_3";
+        String instanceKey = "myProcess_5";
         logger.info("开启请假流程...");
         Map<String, Object> map = new HashMap<String, Object>();
         // 在holiday.bpmn中,填写请假单的任务办理人为动态传入的userId,此处模拟一个id
-        map.put("user1", "zhangsan10002");
+        map.put("user1", "zhangsan");
+        map.put("user2", "lisi");
+        map.put("user3", "wangwu");
         ProcessInstance instance = runtimeService.startProcessInstanceByKey(instanceKey, map);
         logger.info("启动流程实例成功:{}", instance);
         logger.info("流程实例ID:{}", instance.getId());

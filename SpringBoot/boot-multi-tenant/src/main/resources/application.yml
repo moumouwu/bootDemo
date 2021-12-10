@@ -1,0 +1,67 @@
+# 开发环境配置
+server:
+  port: 18086
+  servlet:
+    # 应用的访问路径
+    context-path: /
+  tomcat:
+    # tomcat的URI编码
+    uri-encoding: UTF-8
+
+# 主配置
+spring:
+  # 数据源配置
+  datasource:
+    # 修改数据源为druid
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver #这个要根据mysql-connector-java版本
+    # druid配置
+    druid:
+      # 主数据源
+      master:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        # 默认数据库连接（配置库）
+        url: jdbc:mysql://localhost:3306/db?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+        username: root
+        password: root
+      # 递增db配置
+#      db1:
+#        driver-class-name: com.mysql.cj.jdbc.Driver #这个要根据mysql-connector-java版本
+#        url: jdbc:mysql://localhost:3306/db1?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+#        username: root
+#        password: root
+      initial-size: 5 # 初始化时建立物理连接的个数
+      max-active: 30 # 最大连接池数量
+      min-idle: 5 # 最小连接池数量
+      max-wait: 60000 # 获取连接时最大等待时间，单位毫秒
+      time-between-eviction-runs-millis: 60000 # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      min-evictable-idle-time-millis: 300000 # 连接保持空闲而不被驱逐的最小时间
+      validation-query: SELECT 1 FROM DUAL # 用来检测连接是否有效的sql，要求是一个查询语句
+      test-while-idle: true # 建议配置为true，不影响性能，并且保证安全性。申请连接的时候检测，如果空闲时间大于timeBetweenEvictionRunsMillis，执行validationQuery检测连接是否有效。
+      test-on-borrow: false # 申请连接时执行validationQuery检测连接是否有效，做了这个配置会降低性能。
+      test-on-return: false # 归还连接时执行validationQuery检测连接是否有效，做了这个配置会降低性能。
+      pool-prepared-statements: true # 是否缓存preparedStatement，也就是PSCache。PSCache对支持游标的数据库性能提升巨大，比如说oracle。在mysql下建议关闭。
+      max-pool-prepared-statement-per-connection-size: 50 # 要启用PSCache，必须配置大于0，当大于0时，poolPreparedStatements自动触发修改为true。
+      filters: stat,wall,log4j2 # 配置监控统计拦截的filters，去掉后监控界面sql无法统计；配置监控统计拦截的filters，stat:监控统计、log4j：日志记录、wall：防御sql注入
+      connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500 # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
+      use-global-data-source-stat: true # 合并多个DruidDataSource的监控数据
+      stat-view-servlet:
+        allow: '' # IP白名单(没有配置或者为空，则允许所有访问) allow: 127.0.0.1,192.168.163.1
+        deny: '' # IP黑名单 (存在共同时，deny优先于allow)
+        login-password: xxxxxx # 登录密码
+        login-username: admin # 登录名
+        reset-enable: false #  禁用HTML页面上的“Reset All”功能
+        url-pattern: /druid/* # 配置DruidStatViewServlet
+      web-stat-filter: # 配置DruidStatFilter
+        enabled: true
+        exclusions: '*.js,*.gif,*.jpg,*.bmp,*.png,*.css,*.ico,/druid/*'
+        url-pattern: /*
+
+#  mybatis-plus配置
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    auto-mapping-behavior: full
+    #控制台打印sql语句
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath*:mapper/**/*Mapper.xml

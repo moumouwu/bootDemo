@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.boot.tenant.mapper.TenantMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.boot.tenant.pojo.Tenant">
+        <id column="id" property="id" />
+        <result column="tenant_code" property="tenantCode" />
+        <result column="park_name" property="parkName" />
+        <result column="park_acreage" property="parkAcreage" />
+        <result column="park_addr" property="parkAddr" />
+        <result column="park_contact_name" property="parkContactName" />
+        <result column="park_contact_phone" property="parkContactPhone" />
+        <result column="vip_end_time" property="vipEndTime" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+    </resultMap>
+
+</mapper>

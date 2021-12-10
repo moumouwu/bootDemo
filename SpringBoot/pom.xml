@@ -18,6 +18,7 @@
         <module>boot-netty</module>
         <module>juc</module>
         <module>boot-activiti</module>
+        <module>boot-multi-tenant</module>
     </modules>
 
     <artifactId>SpringBoot</artifactId>

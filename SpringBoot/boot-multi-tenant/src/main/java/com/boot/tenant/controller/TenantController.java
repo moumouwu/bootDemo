@@ -55,10 +55,10 @@ public class TenantController {
         tenantRdsServiceImpl.switchRds(tenantCode);
 //        tenantRdsServiceImpl.switchRds("dataSourceDb1");dataSourceMaster
         System.out.println((DynamicDataSource.getDataSourceKey()));
-        List<User> user = userMapper.selectAll();
-        System.out.println(JSON.toJSONString(user));
-        return JSON.toJSONString(user);
+//        List<User> user = userMapper.selectAll();
+//        System.out.println(JSON.toJSONString(user));
+//        return JSON.toJSONString(user);
 
-//        return JSON.toJSONString(tenant);
+        return JSON.toJSONString(tenantCode);
     }
 }

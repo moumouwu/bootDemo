@@ -26,15 +26,23 @@ spring:
             maxEvictableIdleTimeMillis: 900000
             # 配置检测连接是否有效
             validationQuery: SELECT 1 FROM DUAL
-            testWhileIdle: true
-            testOnBorrow: false
-            testOnReturn: false
+            testWhileIdle: true # 建议配置为true，不影响性能，并且保证安全性。申请连接的时候检测，如果空闲时间大于timeBetweenEvictionRunsMillis，执行validationQuery检测连接是否有效。
+            testOnBorrow: false # 申请连接时执行validationQuery检测连接是否有效，做了这个配置会降低性能。
+            testOnReturn: false # 归还连接时执行validationQuery检测连接是否有效，做了这个配置会降低性能。
+            pool-prepared-statements: true # 是否缓存preparedStatement，也就是PSCache。PSCache对支持游标的数据库性能提升巨大，比如说oracle。在mysql下建议关闭。
+            max-pool-prepared-statement-per-connection-size: 50 # 要启用PSCache，必须配置大于0，当大于0时，poolPreparedStatements自动触发修改为true。
+            filters: stat,wall,log4j2 # 配置监控统计拦截的filters，去掉后监控界面sql无法统计；配置监控统计拦截的filters，stat:监控统计、log4j：日志记录、wall：防御sql注入
+            connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500 # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
+            use-global-data-source-stat: true # 合并多个DruidDataSource的监控数据
             webStatFilter:
                 enabled: true
+                exclusions: '*.js,*.gif,*.jpg,*.bmp,*.png,*.css,*.ico,/druid/*'
+                url-pattern: /*
             statViewServlet:
                 enabled: true
                 # 设置白名单，不填则允许所有访问
-                allow:
+                allow:  # IP白名单(没有配置或者为空，则允许所有访问) allow: 127.0.0.1,192.168.163.1
+                deny:  # IP黑名单 (存在共同时，deny优先于allow)
                 url-pattern: /druid/*
                 # 控制台管理用户名和密码
                 login-username: admin
@@ -49,4 +57,5 @@ spring:
                 wall:
                     config:
                         multi-statement-allow: true
+
 

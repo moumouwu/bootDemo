@@ -1,5 +1,6 @@
 package com.boot.tenant;
 
+import jdk.internal.util.xml.impl.Input;
 import org.apache.ibatis.jdbc.ScriptRunner;
 
 import java.io.*;
@@ -47,7 +48,7 @@ public class Main {
 
         File sql = new File("F:\\db2.sql");
 
-        ScriptRunner runner = new ScriptRunner(conn);
+            ScriptRunner runner = new ScriptRunner(conn);
         try {
             runner.setStopOnError(true);
             runner.runScript(new FileReader(sql));

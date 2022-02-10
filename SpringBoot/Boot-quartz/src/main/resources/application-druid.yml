@@ -6,7 +6,7 @@ spring:
         driver-class-name: com.mysql.cj.jdbc.Driver
         sql-script-encoding: utf-8
         druid:
-            url: jdbc:mysql://localhost:3306/goods?useUnicode=true&characterEncoding=utf-8&serverTimezone=Hongkong
+            url: jdbc:mysql://localhost:3306/qrtz_job?useUnicode=true&characterEncoding=utf-8&serverTimezone=Hongkong
             username: root
             password: root
             # 配置druid连接池

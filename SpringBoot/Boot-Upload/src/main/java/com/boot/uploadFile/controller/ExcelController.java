@@ -3,6 +3,7 @@ package com.boot.uploadFile.controller;
 import cn.afterturn.easypoi.excel.ExcelExportUtil;
 import cn.afterturn.easypoi.excel.entity.ExportParams;
 import cn.afterturn.easypoi.excel.entity.enmus.ExcelType;
+import com.alibaba.fastjson.JSON;
 import com.boot.uploadFile.exception.CustomException;
 import com.boot.uploadFile.pojo.User;
 import com.boot.uploadFile.pojo.UserExcelVO;
@@ -42,11 +43,11 @@ public class ExcelController {
      * @throws IOException
      */
     @GetMapping(value = "/export")
-    public JsonResult exportExcel(
+    public void exportExcel(
             HttpServletResponse response) throws IOException {
         List<UserExcelVO> userExcelVOS = getList();
         ExcelUtilsPoi.exportExcel(userExcelVOS, "证书列表信息", "证书列表信息sheet", UserExcelVO.class, "证书列表信息表", response);
-        return new JsonResult();
+//        return new JsonResult();
     }
 
 
@@ -80,7 +81,7 @@ public class ExcelController {
             // 创建sheet2使用得map
             List<User> userList = getUserList();
             Map<String, Object> empExportMap = new HashMap<>();
-            deptExportMap.put("title", empExportParams);
+            empExportMap.put("title", empExportParams);
             empExportMap.put("entity", User.class);
             empExportMap.put("data", userList);
 
@@ -94,6 +95,7 @@ public class ExcelController {
 
             ExcelUtilsPoi.downLoadExcel("员工报表", response, workBook);
         } catch (Exception e) {
+            e.printStackTrace();
             throw new CustomException("导出失败", 40000);
         }
         return "success";

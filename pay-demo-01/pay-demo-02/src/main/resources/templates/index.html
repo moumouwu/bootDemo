@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script>
+        function doAlipayPay() {
+            $.ajax({
+                url: window.location.origin + "/pay/alipay/pay",
+                dataType: 'json',
+                type: 'POST',
+                contentType: 'application/json;charset=UTF-8',
+                data: JSON.stringify({subject: "商品测试A", total: 0.01}),
+                success: function (resp) {
+                    console.log(resp)
+                    const newTab = window.open()
+                    const div = document.createElement('div')
+                    div.innerHTML = resp
+                    newTab.document.body.appendChild(div)
+                    newTab.document.forms.punchout_form.submit()
+                },
+                error: function (error) {
+                    console.log(error)
+                }
+            })
+        }
+
+        function doFaceToFacePay() {
+            $.ajax({
+                url: window.location.origin + "/pay/alipay/preCreate",
+                dataType: 'json',
+                type: 'POST',
+                contentType: 'application/json;charset=UTF-8',
+                data: JSON.stringify({subject: "商品测试A", total: 0.01}),
+                success: function (resp) {
+                    console.log(resp)
+                    $("#imgAli").attr('src', resp)
+                    // const qrcode = new QRCode("wechatpayBox", resp.qrCode)
+                },
+                error: function (error) {
+                    console.log(error)
+                }
+            })
+        }
+
+        function doDownloadBill() {
+            $.ajax({
+                url: window.location.origin + "/pay/alipay/downloadBill",
+                dataType: 'json',
+                type: 'POST',
+                data: {
+                    billType: 'trade',
+                    billTime: '2021-03-30'
+                },
+                success: function (resp) {
+                    console.log(resp)
+                },
+                error: function (error) {
+                    console.log(error)
+                }
+            })
+        }
+
+
+        /*******************************************************/
+
+        function doWechatpayPay() {
+            $.ajax({
+                url: window.location.origin + "/pay/wechatpay/pay",
+                dataType: 'json',
+                type: 'POST',
+                contentType: 'application/json;charset=UTF-8',
+                data: JSON.stringify({subject: "商品测试A", total: 0.01}),
+                success: function (resp) {
+                    console.log(resp)
+                    const qrcode = new QRCode("wechatpayBox", resp.code_url)
+
+                },
+                error: function (error) {
+                    console.log(error)
+                }
+            })
+        }
+        function wxpayPay() {
+            $.ajax({
+                url: window.location.origin + "/api/systemPayment/wxPayment",
+                dataType: 'json',
+                type: 'POST',
+                contentType: 'application/json;charset=UTF-8',
+                data: JSON.stringify({subject: "商品测试A", total: 0.01}),
+                success: function (resp) {
+                    console.log(resp)
+                    // const qrcode = new QRCode("wechatpayBox", resp.code_url)
+                },
+                error: function (error) {
+                    console.log(error)
+                }
+            })
+        }function wxpayPay2() {
+            $.ajax({
+                url: window.location.origin + "/api/systemPayment/wxPayment2",
+                dataType: 'json',
+                type: 'POST',
+                contentType: 'application/json;charset=UTF-8',
+                data: JSON.stringify({subject: "商品测试A", total: 0.01}),
+                success: function (resp) {
+                    console.log(resp)
+                    // const qrcode = new QRCode("wechatpayBox", resp.code_url)
+                },
+                error: function (error) {
+                    console.log(error)
+                }
+            })
+        }
+
+        function wechatPayDownloadFundBill() {
+            $.ajax({
+                url: window.location.origin + "/pay/wechatpay/downloadFundBill",
+                dataType: 'json',
+                type: 'POST',
+                data: {
+                    accountType: 'BASIC',
+                    billDate: '2021-04-01'
+                },
+                success: function (resp) {
+
+                },
+                error: function (error) {
+                    console.log(error)
+                }
+            })
+        }
+
+    </script>
+    <style rel="stylesheet" type="text/css">
+        h3 {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<h1>你好，欢迎来到首页！</h1>
+<h3 onclick="doAlipayPay()">支付宝:支付</h3>
+<h3 onclick="doFaceToFacePay()">支付宝:当面付</h3>
+<div id="aliImg">
+    <img src="" id="imgAli">
+</div>
+<h3 onclick="doDownloadBill()">支付宝:下载对账单</h3>
+<hr>
+<h3 onclick="doWechatpayPay()">微信支付:支付</h3>
+<h3 onclick="wxpayPay()">微信支付:小程序支付</h3>
+<h3 onclick="wxpayPay2()">微信支付:小程序支付2</h3>
+<div id="wechatpayBox">
+
+</div>
+
+<h3 onclick="wechatPayDownloadFundBill()">微信支付:下载资金账单</h3>
+</body>
+</html>

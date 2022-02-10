@@ -25,7 +25,7 @@ public class JobInvokeUtil {
         String beanName = getBeanName(invokeTarget);
         String methodName = getMethodName(invokeTarget);
         List<Object[]> methodParams = getMethodParams(invokeTarget);
-
+        System.out.println(methodParams);
         if (!isValidClassName(beanName)) {
             Object bean = SpringUtils.getBean(beanName);
             invokeMethod(bean, methodName, methodParams);
@@ -45,6 +45,11 @@ public class JobInvokeUtil {
     private static void invokeMethod(Object bean, String methodName, List<Object[]> methodParams)
             throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException,
             InvocationTargetException {
+        System.out.println(methodParams == null);
+        System.out.println(methodParams);
+        System.out.println(methodName);
+        System.out.println(bean);
+        System.out.println(!methodParams.isEmpty());
         if (!methodParams.isEmpty() && methodParams.size() > 0) {
             Method method = bean.getClass().getDeclaredMethod(methodName, getMethodParamsType(methodParams));
             method.invoke(bean, getMethodParamsValue(methodParams));
@@ -57,7 +62,7 @@ public class JobInvokeUtil {
     /**
      * 校验是否为为class包名
      *
-     * @param str 名称
+     * @param invokeTarget 名称
      * @return true是 false否
      */
     public static boolean isValidClassName(String invokeTarget) {
@@ -95,7 +100,8 @@ public class JobInvokeUtil {
     public static List<Object[]> getMethodParams(String invokeTarget) {
         String methodStr = StringUtils.substringBetween(invokeTarget, "(", ")");
         if (StringUtils.isEmpty(methodStr)) {
-            return null;
+            System.err.println("methodStrIsNull");
+            return new LinkedList<>();
         }
         String[] methodParams = methodStr.split(",");
         List<Object[]> classs = new LinkedList<>();

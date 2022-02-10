@@ -41,19 +41,7 @@ public class SysJobController {
         return AjaxResult.success(jobService.selectJobById(jobId));
     }
 
-    /**
-     * 新增定时任务
-     */
-    @PostMapping
-    public AjaxResult add(@RequestBody SysJob sysJob) throws SchedulerException, TaskException
-    {
-        if (!CronUtils.isValid(sysJob.getCronExpression()))
-        {
-            return AjaxResult.error("cron表达式不正确");
-        }
-        sysJob.setCreateBy("张三");
-        return toAjax(jobService.insertJob(sysJob));
-    }
+
 
     /**
      * 修改定时任务

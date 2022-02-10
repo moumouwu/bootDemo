@@ -1,0 +1,56 @@
+server:
+  port: 9002
+
+# Thymeleaf config
+spring:
+  thymeleaf:
+    cache: false
+    mode: HTML
+    suffix: .html
+    prefix: classpath:/templates/
+    encoding: UTF-8
+    servlet:
+      content-type: text/html
+
+
+# Payment method parameter configuration
+pay:
+  alipay:
+    app_id: 2021000117627663
+    # merchant_private_key: MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCfzFJuNJh/kxOAOFY8zweDC8rE4iREhTLDl0ZcUL1OpabwPU/JjRFuLpgCpHpAsk5TGGG7mboYdS9UH6d7Xg6KZzXJmLo8JKN5plvVgjboBmpW2xAXPT0tH3RjlR26caPHs9GKMkjXrwEz9WI7PF/DDZ6knlwsxnt9ZMlDWmXiXYwSAgeg1UhQXXZtglobOd8TvVEoyM6mEln5Vcr8AOPlJU8uAWcxeY7ZdQy5utwXw+RfUoqjnTCIUMewhjXb8RrZbLX/bAoxYyeGsijc8D1pUd227mjAxNGZYg+RnN+Ri+x54tHD0H1BgP5tqynWcQkrK5Pxg+1WyNhvjYZhZaEDAgMBAAECggEAIeFJLNJ77rh5LvtC1XuzhQZQBHRJ6jkvbSa6pUH9ERqwDUmCjCIbqve4BP9oaCUl1BpcRlEukpbt5PEdKlvjy1ZcohR+j9fYzScHW3pTN9h8XVPu0m6KdPGxVJe+CNSlO+cVKy7EIO6a27BQFm0ThKBznUVyF5AxiIGA5oXZCighO9Pextn3AyCmNUIWndmU9uToECm7UKDzEJFxLpjdwtzjakpM33YijJ1cDvlfPP9SYD0uJnC8NhgTOBx2ehdzL1YxYsDrRlGeyVGBMI/H7mF/BQyW1KW08U+EnRL3Trmw/yOZsRNT9sMPZGpKn5ER3hikhWOQh39amaameVhbgQKBgQD/RkEJpYU40ZWUI+4sV1cl/Cc19TkCr4zvi3S0WSZWd6gLMusNwmXwY937ovriZpCUTLAwDPIi1i3ySTKuio6XGh4Ctk/VPM3Z6Rbuu7vyg1KFynj40tssfzm/kEGn5eUChOMPX80tdgAXG2SAuGD/GOS5wjokho4Q1Gq2yoKcQwKBgQCgQJimrQ2EFHZ2as9ghi4sGo4TAGJH6Yu9o/GsrfsZ0p/hAR3+BNglfh8+Z86eUkB157b2iQ4WnbxMgrp9J/ghRogmsZ+RlhuAOirQQ8lVMcRcdt3BafNqykzBognxULrosFvrNKBWeyzG+owZfMRiAW2MrMDcC/r+kHt7mE78QQKBgCRtWgqOXBxni/i/x9T8Aauh99ZzT9daRbpJJDY4IohkOs6eTXyBKRrMpXirITH9gNQovVud/U+LULMqTtkpXH+jcnTgnzPGoXlfEa6vi3pn0vbUlb6sGCqZXRxA8Z2L6MobPGuNODIsjIa/me/kX7MHUlxPowxjRxKPvUqoS0sRAoGAEG3u+I+fZh4u8v8KWcwH6c+jJ0GP0e2YvQ2U1m5T4xbb+1aA+60Fd/qRO3WrEkI+h5gFAwuUHS94waNZeUFiyA6SIN1vDZ8FHMVZ5FY+yvQ6PHyXSaASK62n5uY0/L+ZGggStG+FzLf+JDxFpstK2v1ofNatQyIbToQDlO1Nk8ECgYEA+2zRLKD9t3/tODZna90B4ZbIgG4hVi97D89Hg6GWxFqkaaFFg8wxg9TTewRp3InN5zYOYyf13X8wQRirMoZDgYLzP6F53gnpXccvWnhtTGlHnicTtnPozC/c/Nw8jn3ywXpO/6i+gE9LI/3u/eA9FPnf4Ckmwcp1/2Poz6V6+Q8=
+    # alipay_public_key: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAppGjKB4yXUPNf6PtKgfhL9z5JFoP/3VPqgSeG90a9a6/8h2CEvE1j6oLAVVnZDNQFGa6RH3jomgQTld10ckWhshKwmuLBsAzSRRmy2Rp15ru9SNbK7QnfeQZXwiITltp2BrTFG+H2U6Wy3MQ1VyOg6lrmM8TvlzRa+NoJN037meznW+pd3k/usS+qvY1OWZjCt041b0wFSjydsRdZKKDgzqaAqy8FTdNbMB/0GONTaM4eWjJc+Eww8r8rRblV44vP53kiFGlcKY7OxrmJ/5ESKkQ2EW4/liYU5mGyY2U9qoj7JRFPxlNsXQIFqAHuS48oqDoq/7GkB9/e5Mqq1o0rQIDAQAB
+    # 应用私钥
+    app_private_key: MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCto0CorfVt9yrBV4I07ghxQeI7YFOEBr9Q+fLYcdBtqNKdpoWBbVLV1x+bbGZCkH6aog6So8FQUOzwTBJAYvyOcRNM4fV6rjFpnZgwutKQElSYSLdiUtiiSD8oyNRS4ZrWz9oJ3LmNG7uEHTjFn3JLDqEOD4TIALHIeT7fR/YrQBKGzSehumM42PbfKS7Yb4Q/3+fGZGtUOrbRQKLMdVJ+SCLYTXSfg5wVJUMpNrfwjolQEKGyIBdggdKelsTXKCrkNQn8IooJlDcDvxISQvhBcKx1p1yuC+GN6OIvRhy8wPsBaiDESnIakEfeOrnh861pIZEBcDz7UycgT2CTWLqXAgMBAAECggEARwbYlCdUlb7dRmk9YdlcqreAizlD8GWyLLWRmOg1kiXUwZg0VFUb5U0yKKmWyvPAVhCkVWeW0/vGcCUt8hiLptiqRHDJsX0/ySwl7Qj+yOA2qnRUT2wEIZ3b+Bruf1i5tdUgI5iebhJCCjDJ4Ezwu7MoPlAqyIVAM/kktsEA+X93hkNrDYrVwV23eCkZskzpG8k2eoXQUAValkvJT00GiYe5iPonbHDaNFKi8PnyuJGtCIfrfMdlk5ttJh19BxI6busiO5vzMaVn9xjuIYG0ZVw8hQLEM5xlXZrzxq1XfkvEtuq/B/DmoeR9Hm/z7Xm5DARjfiC1lW20CTr5DgFEQQKBgQDY4iNXRx56tP2Apw/tS1FicHyCqWzckE2RkUH68JMVi79mlio5ADk2HjAcV+GgjNBSDnS1vwxCxjD9jK1L+s8gh93HCFmNWYszAhMU3iv4kGYqI3RtuBV2/iDTPj1plpvGSs+IMs3Rr4iiPA62MShOp64H9uMYMHOrtGhOnYT5XQKBgQDM9GRIId4cgAEd2as6uDfErYXnaFP3+2lWy6kY0Vtr3ic52F8fciNzIbFR3rsyQbSJXCWzOC//bogimKXVGjwmFMgpmeKq0KZzWPuehtPKh41urPaR2cRePjA/g2V1/4jfbkNLw/wROhtxWe4cnrYR7Hx6bPwIsmUo2TvFQA+ggwKBgQCwqx0Qtm0clZw+lVfC+2xzHKBAK1TzIlUdc87kY93cWjbykPYZ8pWoANU98VRo3OvBO+dUOSj6p8k2cMalssvQevxsad/Q5ZUfWtxCTmxREQc34iOwUJijkoUYroWGIloIH96H2qKP4UYSqYtuXAKyd6Kq+DCq/qTqxI2HJIcyPQKBgBj37P+coKJ4NaqdSe7tYl3jhdybKR+c0UhxpzgOyURq2/yAD5aVIRx1jlSa/dMxjfzt7OnYfoBvxsXwMsOzXoCFJ51p0eNdZ+nFfWHiqwqRWPmSuLcsAHA6w0X5i/LEHriZhjlEtwCiQ5WbjxaNf0DPvpprjIjCsvA3BsEQ/NZhAoGANGvf5aQ8R9nEHUhDsc70oMFOqAMFzad6aWYwjCKYT4nhT0H2fcJ5q02yrCa7+dC37QzQ+hejzjgbToOmkiRqvFY4uSyuVoKHKnoKazcm6y1IGtqO8KdXGF7wBqLFzo81K9bB/+/y1OV7b1F7XiaqJVU1/AmmWEUw6GluI5eNch4=
+    # 应用公钥证书
+    app_certPath: E:\b-wordplace\example\pay-demo-01\cert\appCertPublicKey_2021000117627663.crt
+    # 支付宝根证书
+    ali_rootCertPath: E:\b-wordplace\example\pay-demo-01\cert\alipayRootCert.crt
+    # 支付宝公钥证书
+    ali_public_CertPath: E:\b-wordplace\example\pay-demo-01\cert\alipayCertPublicKey_RSA2.crt
+    # 后台回调地址
+    notify_url: http://h89zsg.natappfree.cc/pay/alipay/notify
+    protocol: https
+    sign_type: RSA2
+    gateway_url: openapi.alipaydev.com
+  #  return_url: https://cloud.xmlcitc.com/pay/alipay/return\
+  # 前台跳转地址
+  return_url: http://h89zsg.natappfree.cc/pay/alipay/return
+
+  wechatpay:
+    # 绑定的商家appId
+    app_id: wx18463c67dbbfe80c
+    # 商户私钥路径
+    api_client_key_pem: C:\wechatpay\apiclient_key.pem
+    # 平台证书路径
+    platform_cert_pem: C:\wechatpay\wechatpay_73791C6455DD3EC12FE95E4051F71A1EE688A860.pem
+    # 商户号
+    mch_id: 1567964681
+    # API证书序列号
+    mch_serial_no: 23D837D84A7DAE38F30D57197F5745BEC59E28FF
+    # apiV3 密钥
+    api_v3: 9Cl7J0PzUAEJzKEXSaRXnszFSUnQX31V
+    # 扫码页面路径
+    pay_page_url: https://cloud.xmlcitc.com/wechatpay/scan
+    # 回调地址，注意 notify结尾处不能携带其他内容
+    notify_url: https://cloud.xmlcitc.com/v1/pay/wechatpay/notify
+

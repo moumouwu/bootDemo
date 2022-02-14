@@ -1,0 +1,10 @@
+实现了Springboo+Security+OAuth2+Redis整合
+1.该项目没有实现OAuth2授权码模式，原因：ResourceServerConfigurerAdapter和WebSecurityConfigurerAdapter有点冲突，没有找到一个好的解决方式
+
+2.在原本grant_type的基础上，自定义了额外三种：手机号验证码获取access_token、手机号密码登录获取access_token、微信小程序获取access_token，如有其它需求类似邮箱登录等，可额外实现
+
+3.对于原本的错误信息及获取access_token的回调数据格式进行了格式化处理
+
+4.放通白名单携带了access_token不需要去校验access_token
+
+5.实现了退出登录，清除redis中的授权信息

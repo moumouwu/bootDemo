@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhty.inspect.mapper.AuthMapper">
+
+  <!-- 用户表查询记录公共SQL语句提取 -->
+  <sql id="BASE_LOGIN">
+    select u.id,u.phone,u.wechatOpenId,u.username,u.password,u.avatar,u.gender,u.uniqueId,u.nickname,u.locked,u.expired,u.credExpired,u.enabled,u.createTime,u.updateTime,
+           r.id as role_id, r.name as role_name,r.description as role_desc,r.createTime as role_createTime,r.updateTime as role_updateTime
+    from t_oauth_user as u
+           inner join t_oauth_user_role as ur on u.id = ur.userId
+           inner join t_oauth_role as r on ur.roleId = r.id
+  </sql>
+
+  <!-- 多表查询结果集映射 -->
+  <resultMap id="UserRoleMap" type="com.zhty.inspect.entity.auth.AuthUserDetails">
+    <result column="id" property="id"></result>
+    <result column="phone" property="phone"></result>
+    <result column="wechatOpenId" property="wechatOpenId"></result>
+    <result column="username" property="username"></result>
+    <result column="avatar" property="avatar"></result>
+    <result column="password" property="password"></result>
+    <result column="gender" property="gender"></result>
+    <result column="uniqueId" property="uniqueId"></result>
+    <result column="nickname" property="nickname"></result>
+    <result column="locked" property="locked"></result>
+    <result column="expired" property="expired"></result>
+    <result column="credExpired" property="credExpired"></result>
+    <result column="enabled" property="enabled"></result>
+    <result column="createTime" property="createTime"></result>
+    <result column="updateTime" property="updateTime"></result>
+    <collection property="role" ofType="com.zhty.inspect.entity.auth.AuthRole">
+      <result column="role_id" property="id"></result>
+      <result column="role_name" property="name"></result>
+      <result column="role_desc" property="description"></result>
+      <result column="role_createTime" property="createTime"></result>
+      <result column="role_updateTime" property="updateTime"></result>
+    </collection>
+  </resultMap>
+
+
+  <!-- 登录查询 [binary关键字：严格区分匹配字符大小写] -->
+  <select id="findByUsername" resultMap="UserRoleMap">
+    <include refid="BASE_LOGIN"></include>
+    where binary u.username = #{username}
+  </select>
+
+  <!-- 根据手机号查询 -->
+  <select id="findByPhone" resultMap="UserRoleMap">
+    <include refid="BASE_LOGIN"></include>
+    where binary u.phone = #{phone}
+  </select>
+
+  <!-- 根据微信小程序openId查询 -->
+  <select id="findByWechatOpenid" resultMap="UserRoleMap">
+    <include refid="BASE_LOGIN"></include>
+    where binary u.wechatOpenId = #{openid}
+  </select>
+
+  <!-- 客户端查询 -->
+  <select id="findByClientId" resultType="com.zhty.inspect.entity.auth.OauthClientDetails">
+    select * from t_oauth_client where `client_id` = #{clientId}
+  </select>
+
+  <select id="findByUsername2" resultMap="UserRoleMap">
+    <include refid="BASE_LOGIN"></include>
+    where u.username = #{username}
+  </select>
+
+
+
+
+</mapper>

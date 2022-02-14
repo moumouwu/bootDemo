@@ -1,0 +1,43 @@
+server:
+  port: 4399
+spring:
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 2GB
+  datasource:
+    initialization-mode: embedded
+    url: jdbc:mysql://localhost/db_inspect?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8&allowMultiQueries=true
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    initialSize: 5
+    minIdle: 6
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    useGlobalDataSourceStat: true
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+  redis:
+    database: 0
+    host: localhost
+    port: 6379
+    password:
+    lettuce:
+      pool:
+        max-idle: 8
+        max-wait: 1
+        min-idle: 0
+    timeout: 3600
+
+# Default ResourceId, Equal with Database
+custom:
+  default-resource-id: zhty-oauth2-resource
+

@@ -15,13 +15,13 @@ public class ReentrantReadWriteLockDemo {
         final ReentrantReadWriteLockDemo test = new ReentrantReadWriteLockDemo();
         new Thread(() -> {
             System.out.println();
-//            test.get(Thread.currentThread());
-             test.get2(Thread.currentThread());
+            test.get(Thread.currentThread());
+//             test.get2(Thread.currentThread());
         }).start();
 
         new Thread(() -> {
-//            test.get(Thread.currentThread());
-             test.get2(Thread.currentThread());
+            test.get(Thread.currentThread());
+//             test.get2(Thread.currentThread());
         }).start();
     }
 

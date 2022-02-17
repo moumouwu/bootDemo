@@ -14,7 +14,7 @@ public class CyclicBarrierDemo1 {
 
         // 第一个参数：目标障碍数  第二个参数：一个Runnable任务，当达到目标障碍数时，就会执行我们传入的Runnable
         // 当我们抽了201次的时候，就会执行这个任务。
-        CyclicBarrier cyclicBarrier = new CyclicBarrier(21, () -> {
+        CyclicBarrier cyclicBarrier = new CyclicBarrier(20, () -> {
             System.out.println("恭喜你，已经抽奖201次，幸运值已满，下次抽奖必中荣耀水晶！！！");
         });
 

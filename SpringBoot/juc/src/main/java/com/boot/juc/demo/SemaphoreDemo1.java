@@ -1,5 +1,6 @@
 package com.boot.juc.demo;
 
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 
@@ -10,12 +11,18 @@ import java.util.concurrent.TimeUnit;
 public class SemaphoreDemo1 {
     public static void main(String[] args) {
         // 10台电脑
-        Semaphore semaphore = new Semaphore(10);
+        Semaphore semaphore = new Semaphore(5);
+
+        CountDownLatch countDownLatch = new CountDownLatch(20);
 
         // 20 个小伙伴想要上网
         for (int i = 1; i <= 20; i++) {
             new Thread(() -> {
                 try {
+                    System.out.println(Thread.currentThread().getName()+"进来了网吧");
+                    countDownLatch.countDown();
+                    countDownLatch.await();
+                    Thread.sleep(1000);
                     //等待获取许可证
                     semaphore.acquire();
                     System.out.println(Thread.currentThread().getName() + "抢到了电脑");

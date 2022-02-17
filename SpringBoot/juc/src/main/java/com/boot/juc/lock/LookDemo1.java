@@ -10,6 +10,7 @@ import java.util.concurrent.locks.ReentrantLock;
 public class LookDemo1 {
 
     public static void main(String[] args) {
+
         Share share = new Share();
 
         new Thread(() -> {

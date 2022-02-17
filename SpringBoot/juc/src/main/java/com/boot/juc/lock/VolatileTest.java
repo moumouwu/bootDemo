@@ -8,18 +8,18 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class VolatileTest {
 
-    //    static volatile int i = 0;
+//        static volatile int i = 0;
     static AtomicInteger i = new AtomicInteger(0);
 
     static class AddThread extends Thread {
 
         @Override
         public void run() {
-            synchronized (i) {
+//            synchronized (i) {
                 for (int j = 0; j < 100000; j++) {
                     i.addAndGet(1);
-                    //                    i++;
-                }
+//                                        i++;
+//                }
             }
         }
 

@@ -17,7 +17,7 @@ public class GroupChatClient {
 
     //定义相关的属性
     private final String HOST = "127.0.0.1";//服务器的ip
-    private final int PORT = 6667;//服务器端口
+    private final int PORT = 9999;//服务器端口
     private Selector selector;
     private SocketChannel socketChannel;
     private String username;

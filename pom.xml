@@ -11,6 +11,7 @@
     <modules>
         <module>SpringData</module>
         <module>SpringBoot</module>
+        <module>Dubbo</module>
     </modules>
     <packaging>pom</packaging>
 

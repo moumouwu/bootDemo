@@ -14,13 +14,13 @@ import java.math.BigDecimal;
 public class TestMain {
 
   public static void main(String[] args) throws IOException {
-    ClassPathResource classPathResource = new ClassPathResource("static/apiclient_key.pem");
-//    ClassPathResource classPathResource = new ClassPathResource("static/private_key.txt");
+//    ClassPathResource classPathResource = new ClassPathResource("static/apiclient_key.pem");
+    ClassPathResource classPathResource = new ClassPathResource("static/private_key.txt");
     File file = classPathResource.getFile();
-    String privatKey = getPrivatKey(file);
-    System.out.println(privatKey);
+    String privateKey = getPrivateKey(file);
+    System.out.println(privateKey);
   }
-  public static String getPrivatKey( File file){
+  public static String getPrivateKey( File file){
 //    File file = new File(fileName);
     BufferedReader reader = null;
     StringBuffer sbf = new StringBuffer();

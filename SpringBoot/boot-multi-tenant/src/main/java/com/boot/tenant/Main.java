@@ -2,6 +2,7 @@ package com.boot.tenant;
 
 import jdk.internal.util.xml.impl.Input;
 import org.apache.ibatis.jdbc.ScriptRunner;
+import org.springframework.core.io.ClassPathResource;
 
 import java.io.*;
 import java.sql.*;
@@ -27,7 +28,7 @@ public class Main {
         Connection conn = DriverManager.getConnection(url, "root", "root");
         Statement stat = conn.createStatement();
 
-        String dbName = "db4";
+        String dbName = "db151";
         //创建数据库hello
         stat.executeUpdate("create database " + dbName);
 
@@ -46,7 +47,9 @@ public class Main {
 //        stat.executeUpdate("insert into test values(1, '张三')");
 //        stat.executeUpdate("insert into test values(2, '李四')");
 
-        File sql = new File("F:\\db2.sql");
+        ClassPathResource classPathResource = new ClassPathResource("/static/db3.sql");
+        File sql = classPathResource.getFile();
+//        File sql = new File("/db3.sql");
 
             ScriptRunner runner = new ScriptRunner(conn);
         try {

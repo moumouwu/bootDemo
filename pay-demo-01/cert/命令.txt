@@ -5,3 +5,7 @@ keytool -genkeypair -alias qzcourt -keyalg RSA -keypass Cpxcx1002 -keystore cpxc
 导出公钥
 keytool -list -rfc --keystore certname.jks | openssl x509 -inform pem -pubkey
 keytool -list -rfc --keystore oauthsso.jks | openssl x509 -inform pem -pubkey
+keytool -export -alias test1 -file test.crt -keystore test.keystore
+
+keytool -genkeypair -alias mycert -keyalg RSA -keypass 123456 -keystore mycert .jks -storepass 123456
+keytool -export -alias mycert -file mycert.crt -keystore mycert.keystore

@@ -9,3 +9,7 @@ keytool -export -alias test1 -file test.crt -keystore test.keystore
 
 keytool -genkeypair -alias mycert -keyalg RSA -keypass 123456 -keystore mycert .jks -storepass 123456
 keytool -export -alias mycert -file mycert.crt -keystore mycert.keystore
+
+
+keytool -genkeypair -alias oauthsso -keyalg RSA -keypass 123456 -keystore mystore1.keystore  -storepass 123456  -deststoretype pkcs12
+keytool -export -alias oauthsso -keystore mystore1.keystore  -file publickey1.cer

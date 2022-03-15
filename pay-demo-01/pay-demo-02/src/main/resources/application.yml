@@ -29,14 +29,14 @@ pay:
     # 支付宝公钥证书
     ali_public_CertPath: static/ali/alipayCertPublicKey_RSA2.crt
     # 后台回调地址
-    notify_url: https://ennfq8.natappfree.cc/pay/alipay/notify
+    notify_url: http://uyypdy.cc/pay/alipay/notify
     protocol: https
     sign_type: RSA2
     gateway_url: openapi.alipaydev.com
     encrypt_key: ylHgosQjbzsaYoQSD1eJNQ==
   #  return_url: https://cloud.xmlcitc.com/pay/alipay/return\
   # 前台跳转地址
-  return_url:  https://ennfq8.natappfree.cc/pay/alipay/return
+  return_url: http://uyypdy.natappfree.cc/pay/alipay/return
 
   wechatpay:
     # 绑定的商家appId

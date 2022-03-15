@@ -73,8 +73,7 @@ public class PayController {
     public String preCreate(@RequestBody(required = false) OrderReq order) throws Exception {
         String orderNo = Utils.generateOrderNo();
         AlipayTradePrecreateResponse response = Factory.Payment.FaceToFace()
-//                .agent("202108BBc1f6ff94a1634c3f82da0bddf56e9X02")
-//                .asyncNotify(" https://ennfq8.natappfree.cc/pay/alipay/notify")
+                .asyncNotify("http://uyypdy.natappfree.cc/pay/alipay/notify")
                 .preCreate(order.getSubject(), orderNo, order.getTotal().toString());
         log.info("支付宝:支付回调结果：{}", JSON.toJSONString(response));
         if (!response.getCode().equals("10000")) {
@@ -106,6 +105,7 @@ public class PayController {
 //                .agent("202108BBde48649df0dd4538b392766af7ef2B34")
 //                .pay(order.getSubject(), orderNo, order.getTotal().toString(), returnUrl);
         AlipayTradePagePayResponse response = Factory.Payment.Page()
+                .asyncNotify("http://uyypdy.natappfree.cc/pay/alipay/notify")
                 .pay("订单标题", Utils.generateOrderNo(), order.getTotal().toString(), returnUrl);
         log.info("支付宝:支付回调结果：{}", JSON.toJSONString(response));
         return JSON.toJSONString(response.body);

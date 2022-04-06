@@ -19,6 +19,7 @@
         <module>juc</module>
         <module>boot-activiti</module>
         <module>boot-multi-tenant</module>
+        <module>boot-elk</module>
     </modules>
 
     <artifactId>SpringBoot</artifactId>

@@ -3,7 +3,8 @@
   <process id="myProcess_4" isClosed="false" isExecutable="true" processType="None">
     <startEvent id="_2" name="StartEvent"/>
     <endEvent id="_3" name="EndEvent"/>
-    <userTask activiti:assignee="${user1}" activiti:exclusive="true" id="_4" name="填写请假单"/>
+    <userTask activiti:assignee="${user1}" activiti:exclusive="true" id="_4" name="填写请假单">
+    </userTask>
     <userTask activiti:assignee="${user2}" activiti:exclusive="true" id="_6" name="总经理审批"/>
     <sequenceFlow id="_5" sourceRef="_2" targetRef="_4"/>
     <sequenceFlow id="_7" sourceRef="_4" targetRef="_6">

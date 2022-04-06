@@ -81,7 +81,7 @@ public class Test5 {
         // 根据流程定义的key,负责人assignee来实现当前用户的任务列表查询
         List<Task> list = taskService.createTaskQuery()
                 .processDefinitionKey("myProcess_5")
-//                .taskAssignee("zhangsan10001")
+                .taskAssignee("lisi")
 //                .taskCandidateOrAssigned("department")
 //                .active()
                 .list();
@@ -100,6 +100,14 @@ public class Test5 {
                 System.out.println("getCategory:" + task.getCategory());
                 System.out.println("getDescription:" + task.getDescription());
                 System.out.println("getFormKey:" + task.getFormKey());
+                String days = (String) taskService.getVariable(task.getId(), "days");
+                Date date = (Date) taskService.getVariable(task.getId(), "date");
+                String reason = (String) taskService.getVariable(task.getId(), "reason");
+                String userId = (String) taskService.getVariable(task.getId(), "user2");
+                System.out.println("请假天数:  " + days);
+                System.out.println("请假理由:  " + reason);
+                System.out.println("请假人id:  " + userId);
+                System.out.println("请假日期:  " + date.toString());
                 Map<String, Object> map = task.getProcessVariables();
                 for (Map.Entry<String, Object> m : map.entrySet()) {
                     System.out.println("key:" + m.getKey() + " value:" + m.getValue());
@@ -133,7 +141,7 @@ public class Test5 {
      */
     @org.junit.Test
     public void showTaskVariable() {
-        String instanceId = "41b51686-5672-11ec-9431-2cf05d0fe3e3"; // 任务ID
+        String instanceId = "6c69c3e9-a65e-11ec-b8d1-2cf05d0fe3e3"; // 任务ID
 
         Task task = taskService.createTaskQuery().processInstanceId(instanceId).singleResult();
         if (task == null) {
@@ -158,7 +166,7 @@ public class Test5 {
      */
     @org.junit.Test
     public void employeeApply() {
-        String instanceId = "3b6168b9-5673-11ec-902a-2cf05d0fe3e3"; // 任务ID
+        String instanceId = "6c69c3e9-a65e-11ec-b8d1-2cf05d0fe3e3"; // 任务ID
         String leaveDays = "3"; // 请假天数
         String leaveReason = "回老家结婚"; // 请假原因
         Task task = taskService.createTaskQuery().processInstanceId(instanceId).singleResult();
@@ -190,9 +198,10 @@ public class Test5 {
         logger.info("开启请假流程...");
         Map<String, Object> map = new HashMap<String, Object>();
         // 在holiday.bpmn中,填写请假单的任务办理人为动态传入的userId,此处模拟一个id
-        map.put("user1", "zhangsan");
-        map.put("user2", "lisi");
-        map.put("user3", "wangwu");
+//        map.put("user1", "zhangsan");
+//        map.put("user2", "lisi");
+//        map.put("user3", "wangwu");
+//        map.put("userId", 1);
         ProcessInstance instance = runtimeService.startProcessInstanceByKey(instanceKey, map);
         logger.info("启动流程实例成功:{}", instance);
         logger.info("流程实例ID:{}", instance.getId());

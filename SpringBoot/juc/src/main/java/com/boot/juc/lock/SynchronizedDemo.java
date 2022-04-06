@@ -25,13 +25,13 @@ public class SynchronizedDemo {
             }
         }, "窗口C").start();
 
-        MyThread myThread = new MyThread();
-        new Thread(myThread, "黄牛A").start();
-        new Thread(myThread, "黄牛B").start();
-        new Thread(myThread, "黄牛C").start();
-        new Thread(myThread, "黄牛D").start();
-        new Thread(myThread, "黄牛E").start();
-        new Thread(myThread, "黄牛F").start();
+//        MyThread myThread = new MyThread();
+//        new Thread(myThread, "黄牛A").start();
+//        new Thread(myThread, "黄牛B").start();
+//        new Thread(myThread, "黄牛C").start();
+//        new Thread(myThread, "黄牛D").start();
+//        new Thread(myThread, "黄牛E").start();
+//        new Thread(myThread, "黄牛F").start();
     }
 }
 
@@ -42,6 +42,11 @@ class Ticket {
     // 卖票
     public synchronized void sale() {
         if (number > 0) {
+            try {
+                Thread.sleep(300); // 加入延迟
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             System.out.println(Thread.currentThread().getName() + " : 余票 " + number--);
         }
     }
@@ -57,6 +62,11 @@ class MyThread implements Runnable {
 //            this.sale();
             synchronized (this) {
                 if (ticket > 0) {
+                    try {
+                        Thread.sleep(300); // 加入延迟
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                     System.out.println(Thread.currentThread().getName() + "还剩下卖票：ticket = " + ticket--);
                 }
             }
